@@ -1,0 +1,4 @@
+#!/bin/bash
+
+nohup ./monitor &
+nohup python -m http.server 8282 &
