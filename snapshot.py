@@ -1,8 +1,10 @@
+from __future__ import unicode_literals
 import datetime
 from os.path import join
 import pandas as pd
 import sys
 import io
+from subprocess import check_output
 
 
 def remove_repeated_spaces(data):
@@ -12,8 +14,7 @@ def remove_repeated_spaces(data):
     return '\n'.join(output)
 
 
-def process_file(fp):
-    d = open(fp).read()
+def process_data(d):
     d = remove_repeated_spaces(d)
     f = io.StringIO(d)
     return pd.read_csv(f, header=0, sep=' ')
@@ -25,5 +26,7 @@ def save_snapshot(dst, df):
 
 
 if __name__ == '__main__':
-    df = process_file(sys.argv[1])
-    save_snapshot(sys.argv[2], df)
+    output = check_output(['bjobs', '-sum']).decode()
+
+    df = process_data(output)
+    save_snapshot(sys.argv[1], df)

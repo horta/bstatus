@@ -4,7 +4,7 @@ import pandas as pd
 import sys
 from dateutil.parser import parse as date_parse
 
-from matplotlib import pyplot
+import matplotlib.pyplot as plt, mpld3
 
 
 def process_reports(dst):
@@ -22,7 +22,7 @@ def process_reports(dst):
         dfs.append(df)
     df = pd.concat(dfs, axis=0)
     df.plot(subplots=True)
-    pyplot.show()
+    mpld3.save_html(plt.gcf(), "index.html")
 
 
 if __name__ == '__main__':

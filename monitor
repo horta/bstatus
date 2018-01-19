@@ -1,0 +1,10 @@
+#!/bin/bash
+
+while true
+do
+	echo "Press [CTRL+C] to stop.."
+    python snapshot.py report/
+    python clear_reports.py report/
+    python display.py report/
+	sleep 60
+done
