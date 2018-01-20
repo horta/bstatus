@@ -6,5 +6,7 @@ do
     python snapshot.py report/
     python clear_reports.py report/
     python display.py report/
+    HOST=walter.danilohorta.online
+    scp -i ~/.ssh/id_rsa_bucket index.html bucket@$HOST:~/html/
 	sleep 60
 done
